@@ -1,4 +1,136 @@
+
 Root Exudation Protocol (Adapted from Phillips et al 2008) 
 
 -In-tact fine roots are excavated from soil (15-20 cm) leaving the roots attached. At the interface between O and A horizon and 0.5 meters away from the tree. Roots were traced back to the coarse root or trunk 
+
+-Excavated fine-roots are washed thoroughly to get rid of adhering soil particles. Washed with a squirt bottle containing nutrient solution. (1 hour of washing time). 
+
+-Then, fine-roots are placed in tray with a sand-soil mixture (1:1)(What is this?) for fine-roots to recovery 24-48 hours. 
+
+-Then fine-roots were placed in  30 mL glass cuvette/syringe (Poper & Sons, New Hyde Park, NY) filled with sterile glass beads. Plunger was removed, each syringe was back-filled with sterile acid-washed glass beads (750 micrometer diameter; La De Da Designs, Baton Rouge, LA). 
+
+-At the narrow end of the syringe, a 30 micro m mesh cloth was folded into a cone to support the beads and prevent from clogging the syringe outlet during removal of solution via vacuum pump. 
+
+-A top of syringe, a rubber septum with a small slit cut to accommodate the protruding root was used to seal cuvette. 
+
+-A moist kimwipe was wrapped around exposed portion of root to prevent desiccation
+
+-Small volume of dilute nutrient solution was added to cuvette to maintain humid conditions during incubation
+
+ Cuvettes are then covered with aluminum foil, returned to the excavated area, covered with leaf litter and equilibrated for 2-3 days. Then 2-3 Flushed with nutrient solution to assess exudates. 
+
+-Brotezk et al 2013: 15 ml of C and N free nutrient solution was added to buffer the root system. Roots were incubated for 24 hours. Exudates were then collected by flushing with 15 ml of nutrient solution 3 times. The flushed were stored at -20 C. 
+
+-nonpurgable organic carbon content using an elemental analyzer (Shimadzu-TOC-VCSH). (Rose et al.) Total non-particular organic C on a TOC analyzer (Shimadzu Scientific Instruments) 
+
+-Scaled C exudation by fine root surface area (cm^-2) and mass (g) of each root system. 
+
+
+
+
+Materials: 
+
+-C and N nutrient free solution: What is this? 
+-Trays to bury roots (15-25cm long) (Probably can find these in lab) 
+-soil: sand mixture 
+-Tweezers, other tools to excavate fine-roots (Find in lab) 
+-Squirt bottle to wash roots (Find in lab) 
+
+-Cuvettes/syringes : 30 mL glass  https://www.grainger.com/product/19G363?ef_id=CjwKCAjwsJ6TBhAIEiwAfl4TWMiQJ5Hj9XrT6cbgroFDQIWyntklg0W5MtbYzllFb16fyTvyRNP3bRoCN-8QAvD_BwE:G:s&s_kwcid=AL!2966!3!496359976036!!!g!436597552742!&gucid=N:N:PS:Paid:GGL:CSM-2295:4P7A1P:20501231&gclid=CjwKCAjwsJ6TBhAIEiwAfl4TWMiQJ5Hj9XrT6cbgroFDQIWyntklg0W5MtbYzllFb16fyTvyRNP3bRoCN-8QAvD_BwE&gclsrc=aw.ds
+$33 per syringe 
+https://www.sciencecompany.com/Basket.aspx 
+$17 
+
+(Sherry has 10-12) 
+
+-vacuum pump ?
+
+-sterile (acid washed beads) 60 g (750 microns) 
+https://www.thermofisher.com/order/catalog/product/397641000
+$117 per 100g 
+
+Or, pure sand! 
+https://www.fishersci.com/shop/products/sand-washed-thermo-scientific/AAH379330B#?keyword=ottowa%20sand
+1000g for $35~
+
+
+-rubber septum with slit for root ?
+
+-30 micro m mesh cloth ?
+https://www.fishersci.com/shop/products/quantitative-grade-filter-paper-circles/09790B
+
+
+-kim wipes (found in lab) 
+
+-40 mL I-CHEM glass vials with septum 
+https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12100113
+
+
+-plastic tubing and attachment for syringe 
+
+https://www.usplastic.com/catalog/item.aspx?itemid=85087&gclid=CjwKCAjwsJ6TBhAIEiwAfl4TWLNV1A-1eCpyZgNlvHlHF1UCA9P3Z3je-ht1rRc7gUl83HBVH6NY2hoCWUwQAvD_BwE#anchorTechSpecs
+
+
+NH4+ 
+
+Acid extraction: 
+
+Auto analyzer: Colormetric chemistry (usually run water samples) 
+
+$20 per sample, do extract in lab. 
+
+
+
+Rose’s Protocol: 
+
+-Excavate fine-roots from top horizon (with hands or brushes). 15-20cm: This takes 30-1hour
+
+-Dig a small hole for roots to sit in. 
+
+-Wash roots thoroughly 
+
+-placed wash roots in moist paper towel and rebury for 24 hours 
+
+-Next, place roots in cuvette prepared with mesh funnel at bottom and filled with pure sand or glass beads. Then place fine-roots in cuvette and fill with nutrient solution mixture (record exact amount of solution. 
+
+-incubate for 24 hours. 
+
+-Attach a valve at bottom of cuvette and attach with plastic tubing. On other end attach a second valve and using a syringe, pull liquid out of cuvette. Place liquid in vial with rubber septum. 
+
+-Place vial in cooler, and once back in lab either freeze or refrigerate.
+
+[Currently can do 12 roots per round] 
+
+Alternative, probably more robust protocol: 
+
+Instead of placing wash roots in moist paper towel, have the cuvette set-up ready, place in cuvette with sand and nutrient solution for 24hours. 
+
+-Then, flush out that nutrient solution, add more and leave for 24hours. 
+
+-Extract as above. 
+
+
+
+Materials: 
+-Glass Cuvettes (Sherry has 10 ish) 
+-Rubber septums =Buy
+-valves =Buy?
+-plastic sringes =Buy?
+-plastic tubing =Buy?
+-mesh cloth (smaller than sand) =Buy?
+-40 mL I-CHEM glass vials with septum 
+-Pure Sand =Buy 
+
+Vials:
+https://www.coleparmer.com/i/environmental-express-apc1535-clear-voa-vials-40-ml-ptfe-lined-caps-economy-case-144-cs/3520560
+
+Nutrient Solution: 
+
+0·5 mM NH4NO3, 0·1 mM KH2PO4, 0·2 mM K2SO4, 0·2 mM MgSO4, 0·3 mM CaCl2
+Questions: 
+
+-What to put at top of glass syringe 
+-What to use to clean used equipment (Acid wash)?
+-What material to use to filter at bottom of 30ml cuvette?
+
 
