@@ -30,7 +30,7 @@ Root Exudation Protocol (Adapted from Phillips et al 2008)
 
 Materials: 
 
-Need to buy: 
+Need to buy (These are listed in google spread sheet in the ShRRED google drive folder) 
 
 -pure sand (burn in muffle furnace)  
 https://www.fishersci.com/shop/products/sand-washed-thermo-scientific/AAH379330B#?keyword=ottowa%20sand
@@ -42,12 +42,12 @@ https://www.industrialnetting.com/wn0065-72-65-micron-nylon-woven-mesh.html
 -Whatman paper for Whitman filtration 
 https://www.fishersci.com/shop/products/quantitative-grade-filter-paper-circles/09790B
 
--luer connection pieces (male and female) 
+-luer connection pieces (male and female) 12
 
--3-way stopcock 
+-3-way stopcocks 12
 
--20 mL I-CHEM glass vials with septum 
-https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12100113
+-40 mL TOC vials
+https://us.vwr.com/store/product/31152907/low-toc-vials-c-g-containers
 
 -plastic tubing and attachment for syringe 
 https://www.usplastic.com/catalog/item.aspx?itemid=41617&gclid=CjwKCAjwjtOTBhAvEiwASG4bCCm9-AJrotc1ORSSd7-tS_dPAeAGYaDAcgGnTfH8Ex7hZH7Nwo0VNRoC5QAQAvD_BwE
@@ -70,11 +70,9 @@ Definitely have in lab:
 
 Might have in lab: 
 
--plastic cuvettes for extractions? 
+-plastic cuvettes for extractions 12 
 
--paraflim
-
-
+-paraflim 
 
 
 
