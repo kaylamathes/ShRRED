@@ -30,54 +30,53 @@ Root Exudation Protocol (Adapted from Phillips et al 2008)
 
 Materials: 
 
--C and N nutrient free solution: What is this? 
--Trays to bury roots (15-25cm long) (Probably can find these in lab) 
--soil: sand mixture 
--Tweezers, other tools to excavate fine-roots (Find in lab) 
--Squirt bottle to wash roots (Find in lab) 
+Need to buy: 
 
--Cuvettes/syringes : 30 mL glass  https://www.grainger.com/product/19G363?ef_id=CjwKCAjwsJ6TBhAIEiwAfl4TWMiQJ5Hj9XrT6cbgroFDQIWyntklg0W5MtbYzllFb16fyTvyRNP3bRoCN-8QAvD_BwE:G:s&s_kwcid=AL!2966!3!496359976036!!!g!436597552742!&gucid=N:N:PS:Paid:GGL:CSM-2295:4P7A1P:20501231&gclid=CjwKCAjwsJ6TBhAIEiwAfl4TWMiQJ5Hj9XrT6cbgroFDQIWyntklg0W5MtbYzllFb16fyTvyRNP3bRoCN-8QAvD_BwE&gclsrc=aw.ds
-$33 per syringe 
-https://www.sciencecompany.com/Basket.aspx 
-$17 
-
-(Sherry has 10-12) 
-
--vacuum pump ?
-
--sterile (acid washed beads) 60 g (750 microns) 
-https://www.thermofisher.com/order/catalog/product/397641000
-$117 per 100g 
-
-Or, pure sand! 
+-pure sand (burn in muffle furnace)  
 https://www.fishersci.com/shop/products/sand-washed-thermo-scientific/AAH379330B#?keyword=ottowa%20sand
 1000g for $35~
 
+- mesh cloth to put at bottom on cuvette 
+https://www.industrialnetting.com/wn0065-72-65-micron-nylon-woven-mesh.html
 
--rubber septum with slit for root ?
-
--30 micro m mesh cloth ?
+-Whatman paper for Whitman filtration 
 https://www.fishersci.com/shop/products/quantitative-grade-filter-paper-circles/09790B
 
+-luer connection pieces (male and female) 
+
+-3-way stopcock 
+
+-20 mL I-CHEM glass vials with septum 
+https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12100113
+
+-plastic tubing and attachment for syringe 
+https://www.usplastic.com/catalog/item.aspx?itemid=41617&gclid=CjwKCAjwjtOTBhAvEiwASG4bCCm9-AJrotc1ORSSd7-tS_dPAeAGYaDAcgGnTfH8Ex7hZH7Nwo0VNRoC5QAQAvD_BwE
+
+
+Definitely have in lab: 
+
+-Nutrient solution Cocktail (Helen is making in lab) 
+
+-Tweezers, other tools to excavate fine-roots (Find in lab) 
+
+-Squirt bottle to wash roots (Find in lab) 
+
+-Cuvettes/syringes : 30 mL glass  (Sherry has 10-12) 
 
 -kim wipes (found in lab) 
 
--40 mL I-CHEM glass vials with septum 
-https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12100113
+-Paper towels
 
 
--plastic tubing and attachment for syringe 
+Might have in lab: 
 
-https://www.usplastic.com/catalog/item.aspx?itemid=85087&gclid=CjwKCAjwsJ6TBhAIEiwAfl4TWLNV1A-1eCpyZgNlvHlHF1UCA9P3Z3je-ht1rRc7gUl83HBVH6NY2hoCWUwQAvD_BwE#anchorTechSpecs
+-plastic cuvettes for extractions? 
+
+-paraflim
 
 
-NH4+ 
 
-Acid extraction: 
 
-Auto analyzer: Colormetric chemistry (usually run water samples) 
-
-$20 per sample, do extract in lab. 
 
 
 
