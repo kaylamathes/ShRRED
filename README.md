@@ -8,9 +8,11 @@ Assessing fine-root physiological response to experimental tree girdling to bett
 
 ### Code and Analysis 
 
+-ShRRED_analysis.R
+
 ### Protocols 
 
-
+-Fine_roots_exudation_protocol 
 
 
 
