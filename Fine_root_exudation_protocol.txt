@@ -56,6 +56,19 @@ Find in lab/stockroom:
 
 ***Working Protocol Mixture of Rose and colleagues***
 
+Pre-field Prep work: 
+
+-Burn pure sand in muffle furnance to make sure there is no organic material 
+-Label plastic syringe for nutrient solution and discarded solution 
+-Wash (acid wash?) all materials that will be touched by the extraction (syringes, cuvettes, tubing, luers) 
+-Find a container for each material that is transportable and easy to access 
+-Label all syringes, cuvettes and sampling bags (eg.T01A)
+-Bottle for nutrient solution that is easy to extract with a syringe from 
+-container for pure sand that is easy to pour into funnel 
+-Print Datasheets
+
+
+Day 1
 
 1. Base of the tree, remove litter layer and locate a small intact root system (15-20cm). Gently remove roots from soil by brushing away debris and soil with hand. 30 minutes
  
@@ -108,6 +121,7 @@ Find in lab/stockroom:
 
 10. Let roots in cuvette sit for 24 hours (recovery period).
 
+Day 2
 
 11. After 24 hour recovery period, pull out the solution using a plastic tubing to the stopcock into a plastic syringe. Discard the extract. 
 
@@ -149,18 +163,18 @@ Find in lab/stockroom:
 	-Labelled sampling bags 
 	-Scissors 
 
-16. Once back in the lab, place fine-roots in fridge and perform Whitman filtration on extracts with 30 micron filter paper 
+17. Once back in the lab, place fine-roots in fridge and perform Whitman filtration on extracts with 30 micron filter paper 
 	
 	Materials: IN CHEM LAB
 
-17. Transfer filtered samples to labelled glass scintillation vials 
+18. Transfer filtered samples to labelled glass scintillation vials 
 
 	Materials: 
-	-Scintillation Vials (Labelled) 
+	-Scintillation Vials (Labelled) (Eg. T01A MM/DD/YY liquid volume (mL))
 
-18. Place labeled samples in freezer 
+19. Place labeled samples in freezer 
 
-19. ASAP: Ship samples back to Mac at VCU 
+20. ASAP: Ship samples back to Mac at VCU 
 
 	Materials: 
 	-Shipping container 
