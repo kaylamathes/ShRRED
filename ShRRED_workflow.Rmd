@@ -1,0 +1,64 @@
+---
+title: "SHort-term Rhisozphere Response to Experimental Disturbance (ShRRED) Workflow"
+author: "Kayla Mathes"
+date: "5/11/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Forest disturbances causing a disruption to phloem transport are increasing in North American temperate forests (Dukes et al. 2009; Millar and Stephenson 2015; Sommerfield et al. 2018). Many of these disturbances are the result of host-specific tree boring insects (Busby and Canham 2011; Bentz et al. 2010; Poland and McCullough 2006) causing spatially heterogenous tree mortality that leave many undisturbed trees in the landscape. The stability of important ecosystem functions, including carbon (C) and nitrogen (N) cycling, following these phloem girdling disturbances will, in part, depend on the initial capacity of undisturbed trees to compete for and use these resources to functionally compensate for their senescing neighbors (Flower et al. 2013). While there is growing knowledge of annual-to-decade aboveground C and N cycling responses to girdling disturbance agents at an ecosystem scale for UMBS (Nave et al. 2011; Gough et al. 2013; Staurt-Haentjens et al. 2015) and elsewhere, the immediate belowground responses to disturbance have been poorly characterized.  
+
+
+Fine-roots assimilate soil nutrients (Huo et al. 2017) and assessing their physiological response to disturbance is key to understanding how nutrient redistribution supports compensatory growth following a phloem-distruptive disturbance. In symbiosis with mycorrhizae, fine-roots acquire essential nutrients through exudation of enzymes to liberate ions from mineral and organic soil surfaces (Johnson et al 1997; Bais et al. 2006). Through exudation, fine-roots exert a large influence on the C and N cycle in the rhizosphere (Ekberg et al. 2006). Many studies have shown that tree girdling heavily and immediately diminishes root growth and function by disconnecting carbohydrate supply from recently fixed photosynthate (Nakane et al. 1996; Hogberg et al. 2001; Bhupinderpal-Singh et al. 2003; Ekberg et al. 2006), decoupling the localized rhizosphere nutrient cycle within a matter of weeks and potentially leading to leaching of limiting nutrients, such as N (Gunderson et al. 2006). The ability for healthy individuals within disturbed forest to retain limiting resources will depend on how and when their fine-roots physiologically respond to newly liberated resources from their senescent neighbor.  
+	
+
+In the Forest Resilience Threshold Experiment (FoRTE), we observed a rapid response in belowground C cycling to girdling disturbance, including a significant decline in soil respiration within the first 6 weeks following girdling at 65 and 85% disturbance severities. However, a major knowledge gap remains: what belowground processes unfold within days to weeks after stem girdling, and how are they likely to shape longer-term C cycling stability? This has prompted several unanswered questions about timing and patterns of immediate (days to months) rhizosphere structural and functional responses to disturbance and the cascade of consequences for the N and C cycle in the following years. Using a targeted girdling experiment, I plan to address the following research questions:   
+
+###Objectives 
+**1** How and when does ecosystem-level soil respiration and available soil nitrogen change immediately following a phloem-disrupting disturbance? 
+
+**2** How do fine-roots from non-girdled neighboring trees structurally and functionally respond to a phloem-disrupting disturbance?
+
+**3** Is there evidence that non-girdled trees exhibit an immediate rhizosphere compensatory response following a phloem-disrupting disturbance? 
+
+
+##Methods  
+<br>
+
+#### Study Site and Experimental Design   
+<br>
+![](Figures/Plot_arrangement.png){width=50%}
+<br>
+**Figure 1**: Layout of proposed project. Four 100m2 treatment and control plots randomly assigned. 10 m buffer in between plots on the same side. Total area: 2100m2  = 0.21 ha. Total sampling area (blue + brown): 800m2 .Total girdling area (blue): 400m2. Girdled (blue) and control (brown) plots would be further randomized.   
+
+![](Figures/Plot_Design.jpg){width=75%}
+
+<br>
+**Figure 2**: Example treatment plot with location of non-girdled canopy tree surrounded by girdled subcanopy and canopy trees. Locations of soil respiration (red dots), soil available Nitrogen (blue dots) and fine-root structure and function (yellow dots) measurements are depicted.  
+
+<br>
+
+####Soil Respiration 
+
+####Soil Available Nitrogen
+
+####Fine-root Exudation 
+
+####Fine-root Structure 
+
+
+
+
+```{r}
+
+```
+
+
+
+
+
