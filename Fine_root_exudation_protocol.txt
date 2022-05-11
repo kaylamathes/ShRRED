@@ -1,43 +1,37 @@
 
-Root Exudation Protocol (Adapted from Phillips et al 2008; Abbramoff et al. 2016) 
+***Root Exudation Protocol (Adapted from Phillips et al 2008; Abbramoff et al. 2016)**
 
 
-Materials: 
+*Materials* 
 
-Need to buy (These are listed in google spread sheet in the ShRRED google drive folder) 
+Purchased Items (listed in google spread sheet in the ShRRED google drive folder):
 
 -pure sand (burn in muffle furnace)  
-https://www.fishersci.com/shop/products/sand-washed-thermo-scientific/AAH379330B#?keyword=ottowa%20sand
-1000g for $35~
 
 - mesh cloth to put at bottom on cuvette 
-https://www.industrialnetting.com/wn0065-72-65-micron-nylon-woven-mesh.html
 
--Whatman paper for Whitman filtration 
-https://www.fishersci.com/shop/products/quantitative-grade-filter-paper-circles/09790B
+-male luer connection pieces 1/16" (25 pieces)
 
--luer connection pieces (male and female) 12
+-3-way stopcocks (20 pieces)
 
--3-way stopcocks 12
+-40 mL scintillation vials (septa-cap) (72)
 
--40 mL TOC vials
-https://us.vwr.com/store/product/31152907/low-toc-vials-c-g-containers
+-plastic tubing 1/16" ID
 
--plastic tubing and attachment for syringe 
-https://www.usplastic.com/catalog/item.aspx?itemid=41617&gclid=CjwKCAjwjtOTBhAvEiwASG4bCCm9-AJrotc1ORSSd7-tS_dPAeAGYaDAcgGnTfH8Ex7hZH7Nwo0VNRoC5QAQAvD_BwE
+-plastic syringes 1/16" (25)
 
 
-Definitely have in lab: 
+Find in lab/stockroom:
 
 -Nutrient solution Cocktail (Helen is making in lab) 
 
--Tweezers, other tools to excavate fine-roots (Find in lab) 
+-Tweezers
+
+-Small Brush
 
 -Squirt bottle to wash roots (Find in lab) 
 
 -Cuvettes/syringes : 30 mL glass  (Sherry has 10-12) 
-
--kim wipes (found in lab) 
 
 -Paper towels
 
@@ -45,59 +39,132 @@ Definitely have in lab:
 
 -DI water
 
+-Trowel 
 
-Might have in lab: 
-
--plastic cuvettes for extractions 12 
+-Root Washing Tray
 
 -paraflim 
 
+-Field Funnel 
 
-Working Protocol Mixture of Rose's and colleagues: 
+-Field scissors 
+
+-Shipping containers 
+
+-Dry Ice 
+
+
+***Working Protocol Mixture of Rose and colleagues***
+
 
 1. Base of the tree, remove litter layer and locate a small intact root system (15-20cm). Gently remove roots from soil by brushing away debris and soil with hand. 30 minutes
+ 
+	Materials:
+	-Small hand brush 
+	-tweezers 
 
 2. Dig a small hole for roots to sit in 
 
+	Materials: 
+	-Trowel 
+
 3. Wash roots with a squirt bottle with DI water. Carefully dry roots 
 
-4. Wrap all exposed roots with a moist paper towel. Rebury for 24 hours (Recovery period) 
+	Materials: 
+	-Squirt bottle with DI water 
+	-Washing Tray 
+	-Paper Towels 
 
-5. After 24 hours recovery period, place roots in cuvette fitted with mesh funnel at the bottom. 
+4. place roots in cuvette fitted with mesh funnel at the bottom. 
 
-6.Fill with cuvette with pure sand, covering the roots. 
+	Materials: 
+	-Glass cuvettes fitted with mesh funnel at bottom 
+	-three way stopcock 
 
-7. Using a syringe, put 15 mL of nutrient solution into cuvette and turn the stopcock up (OFF). 
+5. Fill cuvette with pure sand, covering the roots.  
 
-8. Cover top of cuvette with paraflim, surrounding the root sticking out of the cuvette. 
+	Materials:
+	-Funnel 
+	-pure sand 
 
-9. Cover the cuvette with leaves, making sure it is dark. (keep in upright position) and incubate for 24 hours. Cover with aluminum foil 
+6. Using a syringe, put 10 mL of nutrient solution into cuvette and turn the stopcock up (OFF). 
 
-10. After 24 hour incubation period, pull the 15 mL of solution using a plastic tubing to the stopcock into a plastic syringe and then pour the extraction into the TOC vials (labeled!). 
+	Materials:
+	-plastic syringe dedicated to nutrient solution (Labelled: Nutrient solution) 
+	-Nutrient solution 
 
-11. Insert 10mL more of nutrient solution into the cuvette remove, and place in TOC vial. (Insuring all exudates are removed from the cuvette. 
+8. Cover top of cuvette with paraflim, surrounding the root sticking out of the cuvette and cover any protruding root with a moist paper towel 
 
-12. Place the vials on ice in the field. 
+	Materials: 
+	-paper towel 
+	-Squirt bottle with DI water 
+	-parafilm
+	-Scissors 
 
-13. Once back in the lab, perform Whitman filtration with 30 micron filter paper 
+9. Cover the cuvette with leaves, making sure it is dark (keep in upright position) and cover with aluminum foil. 
 
-14. Place labeled samples in freezer 
+	Materials: 
+	-Aluminum foil 
+
+10. Let roots in cuvette sit for 24 hours (recovery period).
 
 
-Alternative protocol for steps 4-5: This step eliminated the first recovery period. Instead of recovering the roots in a moist towel for 24 hours, we are immediately washing, drying and then filtering the roots with a round of nutrient solution and then perform the incubation starting in step 7.  
+11. After 24 hour recovery period, pull out the solution using a plastic tubing to the stopcock into a plastic syringe. Discard the extract. 
 
-1. After roots are wash and dried, place in cuvette with mesh funnel at bottom. 
+	Materials: 
+	-plastic syringe dedicated to pulling out the discarded nutrient solution (Labelled Discard) 
+	-plastic tubing 
+	-luer connections 
 
-2. Add pure sand until roots are covered. 
+12. Insert 15 mL of nutrient solution, rewrap top of cuvette with parafilm, re-bury with leaves and incubate for 24 hours. 
 
-3. Add 10 mL of nutrient solution 
+	Materials:
+	-Nutrient Solution 
+	-plastic syringe dedicated to nutrient solution input (labeled: Nutrient Solution) 
+	-Aluminum Foil 
 
-4. Paraffin the top of cuvette 
+13. After 24 hour incubation period, pull the 15 mL of solution using a plastic tubing to the stopcock into a labelled plastic syringe. 
 
-5. Pull out the solution and discard (this is washing the roots). 
+	Materials: 
+	-Labelled sampling syringe 
+	-luer connections 
+	-Plastic tubing 
 
-6. Continue with step 7 above 
+14. Insert 10mL more of nutrient solution into the cuvette and immediately remove it into the labelled plastic syringe (Insuring all exudates are removed from the cuvette. 
 
+	Materials: 
+	-nutrient solution 
+	-plastic syringe dedicated to nutrient solution input (labeled: Nutrient Solution) 
+
+15. Place the labelled syringes with extract sample on ice in the field. 
+
+	Materials: 
+	-Field Ice Chest with Ice 
+
+16. Cut fine-root that had been incubated. Wash off sand with DI water and dry. Place fine-root in moist paper towel and in a labelled sampling bag.
+
+	Materials: 
+	-Squirt bottle with DI water
+	-Paper towels 
+	-Labelled sampling bags 
+	-Scissors 
+
+16. Once back in the lab, place fine-roots in fridge and perform Whitman filtration on extracts with 30 micron filter paper 
+	
+	Materials: IN CHEM LAB
+
+17. Transfer filtered samples to labelled glass scintillation vials 
+
+	Materials: 
+	-Scintillation Vials (Labelled) 
+
+18. Place labeled samples in freezer 
+
+19. ASAP: Ship samples back to Mac at VCU 
+
+	Materials: 
+	-Shipping container 
+	-Dry Ice 
 
 
 Help from Helen: 
@@ -107,6 +174,16 @@ Nutrient Solution: (Need to make at LEAST 1 liter, maybe 1.5 liters)
 0·5 mM NH4NO3, 0·1 mM KH2PO4, 0·2 mM K2SO4, 0·2 mM MgSO4, 0·3 mM CaCl2
 
 Perform a Whitman filtration: 30 microns?
+
+
+
+Analysis: 
+
+Pack samples in dry ice and send to Paul B. Lab at VCU for TOC analysis 
+
+$8/sample 
+
+
 
 
 
