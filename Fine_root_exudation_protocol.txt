@@ -14,6 +14,8 @@ Purchased Items (listed in google spread sheet in the ShRRED google drive folder
 
 -3-way stopcocks (20 pieces)
 
+-female luer connection pieces 1/16" (25 pieces) 
+
 -40 mL scintillation vials (septa-cap) (72)
 
 -plastic tubing 1/16" ID
@@ -68,7 +70,7 @@ Pre-field Prep work:
 -Print Datasheets
 
 
-Day 1
+Phase 1
 
 1. Base of the tree, remove litter layer and locate a small intact root system (15-20cm). Gently remove roots from soil by brushing away debris and soil with hand. 30 minutes
  
@@ -100,7 +102,7 @@ Day 1
 	-Funnel 
 	-pure sand 
 
-6. Using a syringe, put 10 mL of nutrient solution into cuvette and turn the stopcock up (OFF). 
+6. Using a syringe, put 10 mL of nutrient solution into cuvette and turn the stopcock up (OFF) (fill the syringe will exact amount up to first black seal) 
 
 	Materials:
 	-plastic syringe dedicated to nutrient solution (Labelled: Nutrient solution) 
@@ -121,7 +123,7 @@ Day 1
 
 10. Let roots in cuvette sit for 24 hours (recovery period).
 
-Day 2
+Phase 2
 
 11. After 24 hour recovery period, pull out the solution using a plastic tubing to the stopcock into a plastic syringe. Discard the extract. 
 
@@ -136,6 +138,8 @@ Day 2
 	-Nutrient Solution 
 	-plastic syringe dedicated to nutrient solution input (labeled: Nutrient Solution) 
 	-Aluminum Foil 
+
+Phase 3
 
 13. After 24 hour incubation period, pull the 15 mL of solution using a plastic tubing to the stopcock into a labelled plastic syringe. 
 
