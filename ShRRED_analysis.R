@@ -63,3 +63,40 @@ percent_biomass_strata <- all_strata_D%>%
   summarize(percent_of_biomass = (total_biomass/36848.91)*100)
 
 
+###Creating a Stem map of ShRRED Plots
+
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data/FoRTE_prelim_data"
+as_id("https://drive.google.com/drive/folders/1lWx-Ggzz1f49S52UkDw85WQ0gUX5m-KN") %>% 
+  drive_ls ->
+  gdfiles
+
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download date
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+
+## Import downloaded date from new data directory "googledrive_data"
+stem_map <- read.csv("googledrive_data/ShRRED_Stem_map_data.csv", na.strings = c("NA", "na"))%>%
+  select(1:18)%>%
+  na.omit()%>%
+  mutate(DBH_cm = Tree_Dia/10)%>%
+  mutate(Longitude_backwards= Longitude*-1)
+
+##Make a stem map in ggplot 
+
+ggplot(stem_map, aes(x = Longitude, y = Latitude)) +
+  geom_point(aes(size = DBH_cm, color = Type),alpha = 0.5)+
+  scale_color_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic()+
+  theme(axis.title = element_text(size = 25), axis.text = element_text(size = 20), legend.title = element_text(size =15), legend.text = element_text(size = 10))+
+  scale_y_continuous(sec.axis = dup_axis(name = NULL, labels = NULL))+
+  scale_x_continuous(sec.axis = dup_axis(name = NULL, labels = NULL))
+
+ggsave(path = "Figures", filename = "Stem_map.png", height = 10, width = 15, units = "in")
