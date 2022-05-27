@@ -5,6 +5,10 @@
 library(googledrive)
 library(ggplot2)
 library(dplyr)
+library(rstatix)
+library(plotrix)
+library(car)
+library(ggpubr)
 
 #####Run prelim analysis on percent aboveground biomass by vertical stratum from FoRTE D replicate (similar ecosystem type as ShRRED)#### 
 
@@ -92,7 +96,7 @@ stem_map <- read.csv("googledrive_data/ShRRED_Stem_map_data.csv", na.strings = c
 ##Make a stem map in ggplot 
 
 ggplot(stem_map, aes(x = Longitude, y = Latitude)) +
-  geom_point(aes(size = DBH_cm, color = Type),alpha = 0.5)+
+  geom_point(aes(size = DBH_cm, color = Type, shape = Strata),alpha = 0.5)+
   scale_color_manual(values = c("#8F6B2B","#4967D7"))+
   theme_classic()+
   theme(axis.title = element_text(size = 25), axis.text = element_text(size = 20), legend.title = element_text(size =15), legend.text = element_text(size = 10))+
@@ -100,3 +104,62 @@ ggplot(stem_map, aes(x = Longitude, y = Latitude)) +
   scale_x_continuous(sec.axis = dup_axis(name = NULL, labels = NULL))
 
 ggsave(path = "Figures", filename = "Stem_map.png", height = 10, width = 15, units = "in")
+
+
+###Soil Respiration 
+
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data"
+as_id("https://drive.google.com/drive/folders/1lWx-Ggzz1f49S52UkDw85WQ0gUX5m-KN") %>% 
+  drive_ls ->
+  gdfiles
+
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download date
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+## Import downloaded date from new data directory "googledrive_data"
+Rs <- read.csv("googledrive_data/Soil_Respiration_ShRRED.csv", na.strings = c("NA", "na"))
+
+##Clean Data
+Rs <- Rs%>%
+  select(!Comments)%>%
+  filter(!is.na(Efflux))
+
+Rs_summary <- Rs%>%
+  group_by(Plot_ID, Type)%>%
+  summarize(ave_Efflux = mean(Efflux), std_efflux = std.error(Efflux),
+            ave_soil_T = mean(Soil_T), std_soil_T = std.error(Soil_T),
+            ave_VWC = mean(Soil_VWC), std_VWC = std.error(Soil_VWC))
+
+
+####Testing Assumptions 
+##Test for outliers test: no outliers
+Rs_summary %>% 
+  group_by(Type) %>%
+  identify_outliers(ave_Efflux)
+
+##Equality of variance test for Type
+leveneTest(ave_Efflux ~ Type, data = Rs_summary)
+
+##Normality (Data are normal)
+# Build the linear model
+normality_test  <- lm(ave_Efflux ~ Type,
+                      data = Rs_summary)
+
+# Create a QQ plot of residuals
+ggqqplot(residuals(normality_test))
+# Shapiro test of normality 
+shapiro_test(residuals(normality_test))
+
+##T-test for Rs between Control and treatment 
+
+t.test(ave_Efflux ~ Type, var.equal = TRUE, data = Rs_summary)
+
+
