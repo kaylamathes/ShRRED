@@ -1,0 +1,33 @@
+***Fine-root structure Protocol*** (Adopted from Weemstra et al. 2020) 
+
+Materials: 
+
+Metal corer
+Sledgehammer 
+Plastic bags
+Sharpie 
+DI water 
+Trays 
+Scanner 
+Scale 
+Drying oven 
+Sieve
+
+
+Protocol: 
+
+1. Take 3 soil core to 10cm 0.5m away from the center tree and place it in labeled sampling bag
+
+2. Sieve away soil, rocks and debris with 2mm sieve
+
+3. Clean roots thoroughly with DI water 
+
+4. Scan roots with WhinRhizo 
+
+5. Dry roots at 60 degrees C for 48hrs in drying oven 
+
+6. Weight Dried roots 
+
+7. Determine Ash free weight 
+
+
