@@ -9,6 +9,7 @@ library(rstatix)
 library(plotrix)
 library(car)
 library(ggpubr)
+library(gridExtra)
 
 #####Run prelim analysis on percent aboveground biomass by vertical stratum from FoRTE D replicate (similar ecosystem type as ShRRED)#### 
 
@@ -105,7 +106,6 @@ ggplot(stem_map, aes(x = Longitude, y = Latitude)) +
 
 ggsave(path = "Figures", filename = "Stem_map.png", height = 10, width = 15, units = "in")
 
-
 ###Soil Respiration 
 
 ##Upload Data from googledrive 
@@ -118,7 +118,7 @@ as_id("https://drive.google.com/drive/folders/1lWx-Ggzz1f49S52UkDw85WQ0gUX5m-KN"
 data_dir <- "googledrive_data/"
 if(!dir.exists(data_dir)) dir.create(data_dir)
 
-#Download date
+#Download data
 for(f in seq_len(nrow(gdfiles))) {
   cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
   drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
@@ -132,34 +132,117 @@ Rs <- Rs%>%
   select(!Comments)%>%
   filter(!is.na(Efflux))
 
-Rs_summary <- Rs%>%
-  group_by(Plot_ID, Type)%>%
+Rs_stats <- Rs%>%
+  group_by(Plot_ID,Type, Date)%>%
   summarize(ave_Efflux = mean(Efflux), std_efflux = std.error(Efflux),
             ave_soil_T = mean(Soil_T), std_soil_T = std.error(Soil_T),
             ave_VWC = mean(Soil_VWC), std_VWC = std.error(Soil_VWC))
 
+Rs_summary <- Rs%>%
+  group_by(Type, Date)%>%
+  summarize(ave_Efflux = mean(Efflux), std_efflux = std.error(Efflux),
+            ave_soil_T = mean(Soil_T), std_soil_T = std.error(Soil_T),
+            ave_VWC = mean(Soil_VWC), std_VWC = std.error(Soil_VWC))
+
+###Graphing 
+
+Rs_summary$Date <- as.Date(Rs_summary$Date)
+
+##Make summary dataframe for line graph of Rs, temperature and moisture 
+Rs_figure <- Rs_summary%>%
+  group_by(Date, Type)%>%
+  summarize(mean_Efflux = mean(ave_Efflux), std_efflux = std.error(ave_Efflux),
+mean_soil_T = mean(ave_soil_T), std_soil_T = std.error(ave_soil_T),
+mean_VWC = mean(ave_VWC), std_VWC = std.error(ave_VWC))
+
+
+
+
+
+
+
+
+##Make a plot of Rs, temperature and moisture by type 
+Rs <- ggplot(Rs_summary, aes(x = Date, y = ave_Efflux, color = Type))+
+  geom_path()+
+  geom_point()+
+  scale_color_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  geom_errorbar(mapping=aes(x=Date, ymin=ave_Efflux - std_efflux, ymax=ave_Efflux + std_efflux), width = 0.1) +
+  theme(legend.position = c(0.2,.9))+
+  scale_x_date( sec.axis = dup_axis(name = NULL, labels = NULL))+
+  scale_y_continuous(position = "left",breaks = seq(from = 1, to = 10, by = 1), sec.axis = dup_axis(name = NULL, labels = NULL))+
+  labs(x = "Date", y=expression(paste(" ",R[s]," (",mu*molCO[2]," ",m^-2," ",sec^-1,")"))) 
+
+Temp <- ggplot(Rs_figure, aes(x = Date, y = mean_soil_T, color = Type))+
+  geom_path()+
+  geom_point()+
+  scale_color_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  theme(legend.position = "none")+
+  geom_errorbar(mapping=aes(x=Date, ymin=mean_soil_T - std_soil_T, ymax=mean_soil_T + std_soil_T), width = 0.1) +
+  scale_x_date( sec.axis = dup_axis(name = NULL, labels = NULL))+
+  scale_y_continuous(position = "left", sec.axis = dup_axis(name = NULL, labels = NULL))+
+  labs(x = "Date", y= expression('Temperature ('*~degree*C*')'))
+
+VWC <- ggplot(Rs_figure, aes(x = Date, y = mean_VWC, color = Type))+
+  geom_path()+
+  geom_point()+
+  scale_color_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  theme(legend.position = "none")+
+  scale_x_date( sec.axis = dup_axis(name = NULL, labels = NULL))+
+  geom_errorbar(mapping=aes(x=Date, ymin=mean_VWC - std_VWC, ymax=mean_VWC + std_VWC), width = 0.1) +
+  scale_y_continuous(position = "left", sec.axis = dup_axis(name = NULL, labels = NULL))+
+  labs(x = "Date", y= "Soil Moisture (%)") 
+
+##Rs and micrometerology Figure 
+p1_grob <- ggplotGrob(Rs)
+p2_grob <- ggplotGrob(Temp)
+p3_grob <- ggplotGrob(VWC)
+
+layout <- rbind(c(1),
+                c(2), 
+                c(3))
+g_timeseries <- grid.arrange(p1_grob, p2_grob, p3_grob, layout_matrix=layout)
+
+
+###Stats 
 
 ####Testing Assumptions 
 ##Test for outliers test: no outliers
-Rs_summary %>% 
+outliers <- Rs %>%
   group_by(Type) %>%
-  identify_outliers(ave_Efflux)
+  identify_outliers(Efflux)
+
+Rs_stats_2 <- Rs%>%
+  filter(Efflux < 20.7)%>%
+  group_by(Plot_ID,Type, Date, Plot_.)%>%
+  summarize(ave_Efflux = mean(Efflux), std_efflux = std.error(Efflux),
+            ave_soil_T = mean(Soil_T), std_soil_T = std.error(Soil_T),
+            ave_VWC = mean(Soil_VWC), std_VWC = std.error(Soil_VWC))%>%
+ungroup()
 
 ##Equality of variance test for Type
-leveneTest(ave_Efflux ~ Type, data = Rs_summary)
+leveneTest(ave_Efflux ~ Type, data = Rs_stats_2)
 
 ##Normality (Data are normal)
 # Build the linear model
 normality_test  <- lm(ave_Efflux ~ Type,
-                      data = Rs_summary)
+                      data = Rs_stats_2)
 
 # Create a QQ plot of residuals
 ggqqplot(residuals(normality_test))
 # Shapiro test of normality 
 shapiro_test(residuals(normality_test))
 
+Rs_t_test <- Rs_stats_2%>%
+  select(Type, Date, ave_Efflux, Plot_.)
+
 ##T-test for Rs between Control and treatment 
+t.test(ave_Efflux ~ Type, var.equal = TRUE, data = Rs_t_test, paired=TRUE)
 
-t.test(ave_Efflux ~ Type, var.equal = TRUE, data = Rs_summary)
+anova <- anova_test(data = Rs_t_test, dv = ave_Efflux, wid = Plot_., within = c(Date, Type))
 
+get_anova_table(anova)
 
