@@ -19,7 +19,7 @@ Fine-roots assimilate soil nutrients (Huo et al. 2017) and assessing their physi
 
 In the Forest Resilience Threshold Experiment (FoRTE), we observed a rapid response in belowground C cycling to girdling disturbance, including a significant decline in soil respiration within the first 6 weeks following girdling at 65 and 85% disturbance severities. However, a major knowledge gap remains: what belowground processes unfold within days to weeks after stem girdling, and how are they likely to shape longer-term C cycling stability? This has prompted several unanswered questions about timing and patterns of immediate (days to months) rhizosphere structural and functional responses to disturbance and the cascade of consequences for the N and C cycle in the following years. Using a targeted girdling experiment, I plan to address the following research questions:   
 
-###Objectives 
+### Objectives 
 **1** How and when does ecosystem-level soil respiration and available soil nitrogen change immediately following a phloem-disrupting disturbance? 
 
 **2** How do fine-roots from non-girdled neighboring trees structurally and functionally respond to a phloem-disrupting disturbance?
@@ -27,7 +27,7 @@ In the Forest Resilience Threshold Experiment (FoRTE), we observed a rapid respo
 **3** Is there evidence that non-girdled trees exhibit an immediate rhizosphere compensatory response following a phloem-disrupting disturbance? 
 
 
-##Methods  
+## Methods  
 <br>
 
 #### Study Site and Experimental Design   
@@ -43,19 +43,434 @@ In the Forest Resilience Threshold Experiment (FoRTE), we observed a rapid respo
 
 <br>
 
-####Soil Respiration 
+```{r, echo = FALSE, message = FALSE, results = "hide"}
 
-####Soil Available Nitrogen
+###Creating a Stem map of ShRRED Plots
+##library
+library(googledrive)
+library(ggplot2)
+library(dplyr)
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data/FoRTE_prelim_data"
+as_id("https://drive.google.com/drive/folders/1i6H86C8OSXAQVhMJgeEKMtbEIMk7M20U") %>% 
+  drive_ls ->
+  gdfiles
 
-####Fine-root Exudation 
 
-####Fine-root Structure 
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download date
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+
+## Import downloaded date from new data directory "googledrive_data"
+stem_map <- read.csv("googledrive_data/ShRRED_Stem_map_data.csv", na.strings = c("NA", "na"))%>%
+  select(1:18)%>%
+  na.omit()%>%
+  mutate(DBH_cm = Tree_Dia/10)%>%
+  mutate(Longitude_backwards= Longitude*-1)
+
+##Make a stem map in ggplot 
+
+ggplot(stem_map, aes(x = Longitude, y = Latitude)) +
+  geom_point(aes(size = DBH_cm, color = Type),alpha = 0.5)+
+  scale_color_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic()+
+  theme(axis.title = element_text(size = 25), axis.text = element_text(size = 20), legend.title = element_text(size =15), legend.text = element_text(size = 10))+
+  scale_y_continuous(sec.axis = dup_axis(name = NULL, labels = NULL))+
+  scale_x_continuous(sec.axis = dup_axis(name = NULL, labels = NULL))
 
 
 
+```
 
-```{r}
+<br>
 
+### Soil Respiration and micrometerology  
+
+```{r, echo = FALSE, message = FALSE, results = "hide"}
+library(googledrive)
+library(ggplot2)
+library(dplyr)
+library(rstatix)
+library(plotrix)
+library(car)
+library(ggpubr)
+library(gridExtra)
+
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data"
+as_id("https://drive.google.com/drive/folders/1DTSowyhfDoIr6MhZlUacvtg_C-YonOWF") %>% 
+  drive_ls ->
+  gdfiles
+
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download data
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+## Import downloaded date from new data directory "googledrive_data"
+Rs <- read.csv("googledrive_data/Soil_Respiration_ShRRED.csv", na.strings = c("NA", "na"))
+
+##Clean Data
+Rs <- Rs%>%
+  select(!Comments)%>%
+  filter(!is.na(Efflux))
+
+
+Rs_stats <- Rs%>%
+  group_by(Type,Date,Plot_ID,)%>%
+  summarize(ave_Efflux = mean(Efflux), std_efflux = std.error(Efflux),
+            ave_soil_T = mean(Soil_T), std_soil_T = std.error(Soil_T),
+            ave_VWC = mean(Soil_VWC), std_VWC = std.error(Soil_VWC))
+
+
+###Graphing 
+
+Rs_stats$Date <- as.factor(Rs_stats$Date)
+Rs_stats$Type <- as.factor(Rs_stats$Type)
+
+##Make a plot of Rs, temperature and moisture by type 
+ggplot(Rs_stats, aes(x = Date, y = ave_Efflux, fill = Type))+
+  geom_boxplot() +
+  scale_fill_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  theme(legend.position = c(0.2,.9))+
+  scale_y_continuous(position = "left",breaks = seq(from = 1, to = 10, by = 1), sec.axis = dup_axis(name = NULL, labels = NULL))+
+  labs(x = "Date", y=expression(paste(" ",R[s]," (",mu*molCO[2]," ",m^-2," ",sec^-1,")"))) 
+
+ggplot(Rs_stats, aes(x = Date, y = ave_soil_T, fill = Type))+
+  geom_boxplot() +
+  scale_fill_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  theme(legend.position = "none")+
+  scale_y_continuous(position = "left", sec.axis = dup_axis(name = NULL, labels = NULL))+
+  labs(x = "Date", y= expression('Temperature ('*~degree*C*')'))
+
+ggplot(Rs_stats, aes(x = Date, y = ave_VWC, fill = Type))+
+  geom_boxplot() +
+  scale_fill_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  theme(legend.position = "none")+
+  scale_y_continuous(position = "left", sec.axis = dup_axis(name = NULL, labels = NULL))+
+  labs(x = "Date", y= "Soil Moisture (%)") 
+
+
+```
+<br>
+
+### Soil Available Nitrogen
+
+```{r, echo = FALSE, message = FALSE, results = "hide"}
+
+##library
+library(googledrive)
+library(ggplot2)
+library(dplyr)
+library(rstatix)
+library(plotrix)
+library(car)
+library(ggpubr)
+library(gridExtra)
+
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data/FoRTE_prelim_data"
+as_id("https://drive.google.com/drive/folders/1m1oaYbm4vtJtOoi9uvTl9HTnUF02GaDD") %>% 
+  drive_ls ->
+  gdfiles
+
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download date
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+
+## Import downloaded date from new data directory "googledrive_data"
+nitrogen <- read.csv("googledrive_data/CalculatedN_ShRRED_REU2022.csv", na.strings = c("NA", "na"))%>%filter(!is.na(ammonium_calculated))
+
+nitrogen$Treatment <- as.factor(nitrogen$Treatment)
+nitrogen$Date_Collected <- as.factor(nitrogen$Date_Collected)
+
+
+#################Summarize Data##########
+
+nitrogen_summary <- nitrogen%>%
+  group_by(Treatment, Date_Collected, Plot)%>%
+  summarize(ave_ammonium = mean(ammonium_calculated), ave_nitrate = mean(nitrate_calculated))
+
+
+################figures###################
+
+ggplot(nitrogen_summary, aes(x = Date_Collected, y = ave_ammonium, fill = Treatment)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = c("#8F6B2B","#4967D7")) +
+  xlab("Date") +ylab("Soil ammonium (mg ammonium/kg soil")
+
+ggplot(nitrogen_summary, aes(x = Date_Collected, y = ave_nitrate, fill = Treatment)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = c("#8F6B2B","#4967D7")) +
+  xlab("Date") +ylab("Soil nitrate (mg nitrate/kg soil")
+
+## Import downloaded date from new data directory "googledrive_data"
+leaf_C_N <- read.csv("googledrive_data/Leaf_N_and_C.csv", na.strings = c("NA", "na"))
+
+
+#############Figures##############
+
+ggplot(leaf_C_N, aes(x = Type_Location, y = N_percent, fill = Type_Location)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = c("#8F6B2B", "#ADD8E6", "#4967D7" )) +
+  xlab("Location") +ylab("% Leaf Nitrogen")
+
+```
+<br>
+
+### Fine-root Structure 
+
+```{r, echo = FALSE, message = FALSE, results = "hide"}
+##library
+library(googledrive)
+library(ggplot2)
+library(dplyr)
+library(rstatix)
+library(plotrix)
+library(car)
+library(ggpubr)
+library(gridExtra)
+
+
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data/FoRTE_prelim_data"
+as_id("https://drive.google.com/drive/folders/1kdQ_jNnmR45p9U2Cnqo_taW5XvDPgs3o") %>% 
+  drive_ls ->
+  gdfiles
+
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download date
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+## Import downloaded date from new data directory "googledrive_data"
+FR_6_26 <- read.csv("googledrive_data/ShRRED_root_structure_6_26_22.csv", na.strings = c("NA", "na"))
+FR_7_13 <- read.csv("googledrive_data/ShRRED_root_structure_7_13_22.csv", na.strings = c("NA","na"))
+FR_7_25 <- read.csv("googledrive_data/ShRRED_root_structure_7_25_22..csv", na.strings = c("NA","na"))
+
+###Clean Data frames 
+
+FR_6_26_clean <- FR_6_26%>%
+  select(Label, Type, Plot, Dry_root_weight_g_measured, Dry_root_adjusted_g,  SoilVol.m3., Length.cm., ProjArea.cm2., SurfArea.cm2., AvgDiam.mm., RootVolume.cm3., Tips, Forks, Crossings)%>%
+  filter(!is.na(Dry_root_weight_g_measured))%>%
+  cbind(Date = "2022-06-26")
+ 
+ 
+ FR_7_13_clean <- FR_7_13%>%
+   select(RHIZO.2017a, Dry_root_weight_g_measured, percent_root, SoilVol.m3., Length.cm., ProjArea.cm2., SurfArea.cm2., AvgDiam.mm., RootVolume.cm3., Tips, Forks, Crossings)%>%
+   filter(!is.na(Dry_root_weight_g_measured))%>%
+   cbind(Date = "2022-07-13")
+ 
+ FR_7_25_clean <- FR_7_25%>%
+   select(RHIZO.2017a, Dry_root_weight_g_measured, SoilVol.m3., Length.cm., ProjArea.cm2., SurfArea.cm2., AvgDiam.mm., RootVolume.cm3., Tips, Forks, Crossings)%>%
+   filter(!is.na(Dry_root_weight_g_measured))%>%
+   cbind(Date = "2022-07-25")
+ 
+ 
+ ###Add a type and plot column for 7-13 and 7-25 data frames 
+ 
+FR_7_25_clean <- FR_7_25_clean%>%
+                           mutate(Type = case_when(RHIZO.2017a == "C1_1" | RHIZO.2017a == "C1_2" |RHIZO.2017a == "C1_3" |RHIZO.2017a == "C1_4" |RHIZO.2017a == "C2_1" |RHIZO.2017a == "C2_2"
+                                                   |RHIZO.2017a == "C2_3" |RHIZO.2017a == "C2_4" |RHIZO.2017a == "C3_1" |RHIZO.2017a == "C3_2" |RHIZO.2017a == "C3_3" | RHIZO.2017a == "C3_4"
+                                                   |RHIZO.2017a == "C4_1"
+                                                  |RHIZO.2017a == "C4_2" |RHIZO.2017a == "C4_3" |RHIZO.2017a == "C4_4" ~ "Control",
+                                                   RHIZO.2017a == "T1_1" |  RHIZO.2017a == "T1_2" |  RHIZO.2017a == "T1_3" |  RHIZO.2017a == "T1_4" |  RHIZO.2017a == "T2_1" | 
+                                                  RHIZO.2017a == "T2_2" |  RHIZO.2017a == "T2_3" |  RHIZO.2017a == "T2_4" |  RHIZO.2017a == "T3_1" |  RHIZO.2017a == "T3_2" |  
+                                                    RHIZO.2017a == "T3_3" |  RHIZO.2017a == "T3_4" |  RHIZO.2017a == "T3_4" |  RHIZO.2017a == "T4_1" |  RHIZO.2017a == "T4_2" | 
+                                                    RHIZO.2017a == "T4_3" |  RHIZO.2017a == "T4_4" ~ "Treatment"))%>%
+                              mutate(Plot = case_when(RHIZO.2017a == "C1_1" | RHIZO.2017a == "C1_2" |RHIZO.2017a == "C1_3" |RHIZO.2017a == "C1_4" | RHIZO.2017a == "T1_1" |  
+                                                        RHIZO.2017a ==  "T1_2" |  RHIZO.2017a == "T1_3" |  RHIZO.2017a == "T1_4" ~ "1",
+                                                      RHIZO.2017a == "C2_1" |RHIZO.2017a == "C2_2"
+                                                      |RHIZO.2017a == "C2_3" |RHIZO.2017a == "C2_4"|RHIZO.2017a == "T2_1" | 
+                                                        RHIZO.2017a == "T2_2" |  RHIZO.2017a == "T2_3" |  RHIZO.2017a == "T2_4" ~ "2", 
+                                                      RHIZO.2017a == "C3_1" |RHIZO.2017a == "C3_2" |RHIZO.2017a == "C3_3" | RHIZO.2017a == "C3_4" |RHIZO.2017a == "T3_1" | 
+                                                        RHIZO.2017a == "T3_2" |  RHIZO.2017a == "T3_3" |  RHIZO.2017a == "T3_4" ~ "3", 
+                                                      RHIZO.2017a == "C4_1"
+                                                      |RHIZO.2017a == "C4_2" |RHIZO.2017a == "C4_3" |RHIZO.2017a == "C4_4"|  RHIZO.2017a == "T4_1" |  RHIZO.2017a == "T4_2" | 
+                                                        RHIZO.2017a == "T4_3" |  RHIZO.2017a == "T4_4" ~ "4" ))
+
+
+FR_7_13_clean <- FR_7_13_clean%>%
+  mutate(Type = case_when(RHIZO.2017a == "C1_1" | RHIZO.2017a == "C1_2" |RHIZO.2017a == "C1_3" |RHIZO.2017a == "C1_4" |RHIZO.2017a == "C2_1" |RHIZO.2017a == "C2_2"
+                          |RHIZO.2017a == "C2_3" |RHIZO.2017a == "C2_4" |RHIZO.2017a == "C3_1" |RHIZO.2017a == "C3_2" |RHIZO.2017a == "C3_3" | RHIZO.2017a == "C3_4"
+                          |RHIZO.2017a == "C4_1"
+                          |RHIZO.2017a == "C4_2" |RHIZO.2017a == "C4_3" |RHIZO.2017a == "C4_4" ~ "Control",
+                          RHIZO.2017a == "T1_1" |  RHIZO.2017a == "T1_2" |  RHIZO.2017a == "T1_3" |  RHIZO.2017a == "T1_4" |  RHIZO.2017a == "T2_1" | 
+                            RHIZO.2017a == "T2_2" |  RHIZO.2017a == "T2_3" |  RHIZO.2017a == "T2_4" |  RHIZO.2017a == "T3_1" |  RHIZO.2017a == "T3_2" |  
+                            RHIZO.2017a == "T3_3" |  RHIZO.2017a == "T3_4" |  RHIZO.2017a == "T3_4" |  RHIZO.2017a == "T4_1" |  RHIZO.2017a == "T4_2" | 
+                            RHIZO.2017a == "T4_3" |  RHIZO.2017a == "T4_4" ~ "Treatment"))%>%
+  mutate(Plot = case_when(RHIZO.2017a == "C1_1" | RHIZO.2017a == "C1_2" |RHIZO.2017a == "C1_3" |RHIZO.2017a == "C1_4" | RHIZO.2017a == "T1_1" |  
+                            RHIZO.2017a ==  "T1_2" |  RHIZO.2017a == "T1_3" |  RHIZO.2017a == "T1_4" ~ "1",
+                          RHIZO.2017a == "C2_1" |RHIZO.2017a == "C2_2"
+                          |RHIZO.2017a == "C2_3" |RHIZO.2017a == "C2_4"|RHIZO.2017a == "T2_1" | 
+                            RHIZO.2017a == "T2_2" |  RHIZO.2017a == "T2_3" |  RHIZO.2017a == "T2_4" ~ "2", 
+                          RHIZO.2017a == "C3_1" |RHIZO.2017a == "C3_2" |RHIZO.2017a == "C3_3" | RHIZO.2017a == "C3_4" |RHIZO.2017a == "T3_1" | 
+                            RHIZO.2017a == "T3_2" |  RHIZO.2017a == "T3_3" |  RHIZO.2017a == "T3_4" ~ "3", 
+                          RHIZO.2017a == "C4_1"
+                          |RHIZO.2017a == "C4_2" |RHIZO.2017a == "C4_3" |RHIZO.2017a == "C4_4"|  RHIZO.2017a == "T4_1" |  RHIZO.2017a == "T4_2" | 
+                            RHIZO.2017a == "T4_3" |  RHIZO.2017a == "T4_4" ~ "4" ))
+                                 
+   
+###Add an adjusted root mass (per ash free weight) But 7-13 and 7-25 will use 95.4% root (from the 7-13 procedure)
+
+FR_7_13_clean <-FR_7_13_clean%>%
+  mutate(Dry_root_adjusted_g = Dry_root_weight_g_measured*0.954)%>%
+  select(!percent_root)
+
+
+FR_7_25_clean <-FR_7_25_clean%>%
+  mutate(Dry_root_adjusted_g = Dry_root_weight_g_measured*0.954)
+  
+###Change the label name in 7-13 and 7-25 files 
+FR_7_13_clean <- rename(FR_7_13_clean, Label = RHIZO.2017a)
+FR_7_25_clean <- rename(FR_7_25_clean, Label = RHIZO.2017a)
+
+##Reordering columns in 7-13 and 7-25 to match 
+FR_7_13_clean <- FR_7_13_clean[, c(1,13,14,2,15,3,4,5,6,7,8,9,10,11,12)]
+
+FR_7_25_clean <- FR_7_25_clean[, c(1,13,14,2,15,3,4,5,6,7,8,9,10,11,12)]
+
+
+##Combine all three data frames together 
+FR_total <- rbind(FR_6_26_clean,FR_7_13_clean,FR_7_25_clean)
+
+#######Calculate Specific Root Length (m/g) as the ratio between Fine-root length and dry root mass
+FR_total$Length.cm. <- as.numeric(FR_total$Length.cm.)
+FR_total$SurfArea.cm2. <- as.numeric(FR_total$SurfArea.cm2.)
+FR_total$AvgDiam.mm. <- as.numeric(FR_total$AvgDiam.mm.)
+
+FR_total <- FR_total%>%
+  mutate(SRL_mg = (Length.cm./Dry_root_adjusted_g)/100)
+
+###Calculate Fine-root tissue density (g/cm^3): Divide fine-root dry wt by fine-root volume
+
+FR_total <- FR_total%>%
+  mutate(Tissue_density_gcm3 = (Dry_root_adjusted_g/RootVolume.cm3.))
+
+###Calculate Fine-root Biomass as kg_m3 from g/cm3
+
+FR_total <- FR_total%>%
+  mutate(biomass_kg_m3 = ((Dry_root_adjusted_g/314.16)*100000)/1000)
+
+###Summarize Root Traits 
+
+FR_total_summary <- FR_total%>%
+  group_by(Type, Date, Plot)%>%
+  summarize(ave_SRL = mean(SRL_mg), ave_root_mass_g = mean(Dry_root_adjusted_g), ave_root_length = mean(Length.cm.), ave_root_volume = mean(RootVolume.cm3.), ave_root_surf_area = mean(SurfArea.cm2.), ave_root_diam = mean(AvgDiam.mm.), ave_tissue_density = mean(Tissue_density_gcm3), ave_biomass = mean(biomass_kg_m3))
+
+###Plot root traits
+ggplot(FR_total_summary, aes(x = Date, y = ave_biomass, fill = Type)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  xlab("Date") +ylab("Fine-root Biomass (kg/m3)")
+
+ggplot(FR_total_summary, aes(x = Date, y = ave_SRL, fill = Type)) +
+  geom_boxplot()+
+  scale_fill_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  xlab("Date") +ylab("Specific fine-root length (m/g)")
+
+
+ggplot(FR_total_summary, aes(x = Date, y = ave_tissue_density, fill = Type)) +
+  geom_boxplot()+
+  scale_fill_manual(values = c("#8F6B2B","#4967D7"))+
+  theme_classic() +
+  xlab("Date") +ylab("Fine-root Tissue Density (g/cm3)")
+
+
+
+```
+
+### Fine-root Exudation 
+
+### Non-structural Carbohydrates 
+
+```{r, echo = FALSE, message = FALSE, results = "hide"}
+
+##library
+library(googledrive)
+library(ggplot2)
+library(dplyr)
+library(rstatix)
+library(plotrix)
+library(car)
+library(ggpubr)
+library(gridExtra)
+
+##Upload Data from googledrive 
+# Direct Google Drive link to "ShRRED_data/"
+as_id("https://drive.google.com/drive/folders/1r00ZJCCPAAQIrhQH3YT0b9xNETzBDDmM") %>% 
+  drive_ls ->
+  gdfiles
+
+# Create a new data directory for files, if necessary
+data_dir <- "googledrive_data/"
+if(!dir.exists(data_dir)) dir.create(data_dir)
+
+#Download date
+for(f in seq_len(nrow(gdfiles))) {
+  cat(f, "/", nrow(gdfiles), " Downloading ", gdfiles$name[f], "...\n", sep = "")
+  drive_download(gdfiles[f,], overwrite = TRUE, path = file.path(data_dir, gdfiles$name[f]))
+}
+
+
+## Import downloaded date from new data directory "googledrive_data"
+NSC <- read.csv("googledrive_data/NSC_summary_mathes.csv", na.strings = c("NA", "na"))%>%
+  select(Sample_Name, Date, Core_type, Plot_ID, Treatment_type, Tree_type, NSC)%>%
+  filter(!is.na(NSC))
+
+
+##Add a "Type_Location" Column that combines the Treatment_type with the Tree_type data for vizualization 
+NSC_summary <- NSC%>%
+  mutate(Type_Location = case_when(Treatment_type == "C" ~ "C_Focal", 
+                                   Treatment_type == "T" & Tree_type == "F" ~ "T_focal", 
+                                   Treatment_type == "T" & Tree_type == "N" ~ "T_adjacent"))
+NSC_summary <- NSC_summary%>%
+  mutate(Core_type_2 = case_when(Core_type == "B" ~ "Bole", 
+                                   Core_type == "R" ~ "Root")) 
+                              
+
+
+##############Figures################
+
+ggplot(NSC_summary, aes(x = Date, y = NSC, fill = Type_Location))+
+  geom_boxplot()+
+  facet_wrap(~ Core_type_2) +
+  scale_y_continuous(position = "left", sec.axis = dup_axis(name = NULL, labels = NULL))+
+  theme_classic() +
+  scale_fill_manual(values = c("#8F6B2B", "#ADD8E6", "#4967D7" )) +
+  ylab("Non-structural Carbohydates (%)")
 ```
 
 
