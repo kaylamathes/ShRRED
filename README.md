@@ -12,11 +12,9 @@ University of Michigan Biological Station, Pellston, MI
 
 ### Code and Analysis 
 
--ShRRED_analysis.R
+-manuscript_script.R
 
-### Protocols 
 
--Fine_roots_exudation_protocol 
 
 
 
