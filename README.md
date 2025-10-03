@@ -2,7 +2,7 @@
 
 
 ### Authors 
-Kayla C. Mathes, Advisor: Christopher M. Gough 
+Kayla C. Mathes, Tatum Delaney, Lisa Nalliah and Christopher M. Gough 
 
 ### Description 
 Welcome to ShRRED!! Assessing fine-root physiological response to experimental tree girdling to better understand mechanisms underlying belowground compensatory growth and carbon cycling responses to forest disturbance.
