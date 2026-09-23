@@ -14,7 +14,9 @@ University of Michigan Biological Station, Pellston, MI
 
 manuscript_script.R
 
-### All data sources and column description is documented in: MetaData.pdf
+### All data sources and column description is documented in: 
+
+MetaData.pdf
 
     
 
